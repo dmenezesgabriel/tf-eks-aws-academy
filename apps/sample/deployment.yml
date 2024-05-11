@@ -1,36 +1,34 @@
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: eks-sample-linux-deployment
-  namespace: eks-sample-app
-  labels:
-    app: eks-sample-linux-app
+  name: nginx
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
-      app: eks-sample-linux-app
+      app: nginx
   template:
     metadata:
       labels:
-        app: eks-sample-linux-app
+        app: nginx
     spec:
-      affinity:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-              - matchExpressions:
-                  - key: kubernetes.io/arch
-                    operator: In
-                    values:
-                      - amd64
-                      - arm64
       containers:
         - name: nginx
-          image: public.ecr.aws/nginx/nginx:1.23
+          image: nginx:1.14.2
           ports:
-            - name: http
+            - name: web
               containerPort: 80
-          imagePullPolicy: IfNotPresent
-      nodeSelector:
-        kubernetes.io/os: linux
+          resources:
+            requests:
+              memory: 256Mi
+              cpu: 250m
+            limits:
+              memory: 256Mi
+              cpu: 250m
+
+      # tolerations:
+      # - key: team
+      #   operator: Equal
+      #   value: devops
+      #   effect: NoSchedule

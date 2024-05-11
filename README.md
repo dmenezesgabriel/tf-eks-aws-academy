@@ -67,16 +67,28 @@ kubectl delete -f apps/sample/hello.yml -n eks-sample-app
 kubectl apply -f apps/sample/deployment.yml -n eks-sample-app
 ```
 
-- **Deploy service to cluster**:
+- **Deploy public load balancer to cluster**:
 
 ```sh
-kubectl apply -f apps/sample/service.yml -n eks-sample-app
+kubectl apply -f apps/sample/public-lb.yml -n eks-sample-app
+```
+
+- **Deploy private load balancer to cluster**:
+
+```sh
+kubectl apply -f apps/sample/private-lb.yml -n eks-sample-app
 ```
 
 - **Get all pods**:
 
 ```sh
 kubectl get all -n eks-sample-app
+```
+
+- **Get services**:
+
+```sh
+kubectl get svc -n eks-sample-app
 ```
 
 - **Get Logs**:
@@ -91,10 +103,16 @@ kubectl logs -n eks-sample-app pod/eks-sample-linux-deployment-66cfbc47b7-v98lc
 kubectl delete -f apps/sample/deployment.yml -n eks-sample-app
 ```
 
-- **Delete service**:
+- **Delete public load balancer**:
 
 ```sh
-kubectl delete -f apps/sample/service.yml -n eks-sample-app
+kubectl delete -f apps/sample/public-lb.yml -n eks-sample-app
+```
+
+- **Delete private load balancer**:
+
+```sh
+kubectl delete -f apps/sample/private-lb.yml -n eks-sample-app
 ```
 
 ## Resources
