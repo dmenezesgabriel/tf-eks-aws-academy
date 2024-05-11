@@ -7,7 +7,7 @@ variable "project_name" {
 }
 
 variable "instance_type" {
-  default = "t3.micro" # t3.micro | t3a.medium
+  default = "t3.small" # t3.micro | t3a.medium
 }
 
 variable "eks_policy_arn" {

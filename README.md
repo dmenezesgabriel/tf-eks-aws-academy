@@ -1,14 +1,10 @@
 # EKS Cluster
 
-## Atualizar credenciais da AWS
+## Update terraform credentials
 
 ```sh
-vi ~/.aws/credentials
+~/.aws/credentials
 ```
-
-_Ir até a parte que deseja deletar abaixo_
-`dd`
-_Colocar novas credenciais_
 
 ## Terraform
 
@@ -20,28 +16,47 @@ terraform destroy
 
 ## Apps
 
-- **Recuperando a configuração para conectar no cluster**:
+- **Set cluster connection config**:
 
 ```sh
-aws eks update-kubeconfig --name nginx --region us-east-1 --profile academy
+aws eks update-kubeconfig --name cluster-postech-challenge-3  --region us-east-1 --profile academy
 ```
 
 ```sh
 kubectl get nodes
 ```
 
-- **Criando aplicação de exemplo**:
+- **hello**:
+
+```sh
+kubectl apply -f apps/sample/hello.yml
+```
+
+```sh
+kubectl get pods -n eks-sample-app
+```
+
+```sh
+kubectl exec aws-cli -n eks-sample-app -- aws s3api list-buckets
+```
+
+```sh
+kubectl delete -f apps/sample/hello.yml -n eks-sample-app
+
+```
+
+- **Create application**:
 
 ```sh
 kubectl create namespace eks-sample-app
 ```
 
 ```sh
-kubectl apply -f apps/sample/deployment.yml
+kubectl apply -f apps/sample/deployment.yml -n eks-sample-app
 ```
 
 ```sh
-kubectl apply -f apps/sample/service.yml
+kubectl apply -f apps/sample/service.yml -n eks-sample-app
 ```
 
 ```sh
@@ -49,15 +64,15 @@ kubectl get all -n eks-sample-app
 ```
 
 ```sh
-kubectl logs -n eks-sample-app pod/eks-sample-linux-deployment-66cfbc47b7-b44tt
+kubectl logs -n eks-sample-app pod/eks-sample-linux-deployment-66cfbc47b7-v98lc
 ```
 
 ```sh
-kubectl delete -f apps/sample/deployment.yml
+kubectl delete -f apps/sample/deployment.yml -n eks-sample-app
 ```
 
 ```sh
-kubectl delete -f apps/sample/service.yml
+kubectl delete -f apps/sample/service.yml -n eks-sample-app
 ```
 
 ## Resources

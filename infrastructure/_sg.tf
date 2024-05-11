@@ -2,7 +2,7 @@
 
 #   name        = "SG-${var.project_name}"
 #   description = "Grupo destinado a projeto de EKS da FIAP"
-#   vpc_id      = data.aws_vpc.main_vpc.id
+#   vpc_id      = data.aws_vpc.default_vpc.id
 
 #   ingress {
 #     description = "ALL"

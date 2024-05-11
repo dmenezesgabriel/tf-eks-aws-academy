@@ -2,7 +2,7 @@
 #   name               = "alb-${var.project_name}"
 #   internal           = false
 #   load_balancer_type = "application"
-#   subnets            = ["${data.aws_subnet.subnet_a.id}", "${data.aws_subnet.subnet_b.id}", "${data.aws_subnet.subnet_c.id}"]
+#   subnets            = ["${data.aws_subnet.default_subnet_a.id}", "${data.aws_subnet.default_subnet_b.id}", "${data.aws_subnet.default_subnet_c.id}"]
 #   security_groups    = [data.aws_security_group.default.id]
 #   idle_timeout       = 60
 # }
