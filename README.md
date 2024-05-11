@@ -22,54 +22,76 @@ terraform destroy
 aws eks update-kubeconfig --name cluster-postech-challenge-3  --region us-east-1 --profile academy
 ```
 
+- **get nodes**:
+
 ```sh
 kubectl get nodes
 ```
 
-- **hello**:
+```sh
+kubectl create namespace eks-sample-app
+```
+
+### hello example
+
+- **Deploy pod to cluster**:
 
 ```sh
 kubectl apply -f apps/sample/hello.yml
 ```
 
+- **Get Pods**:
+
 ```sh
 kubectl get pods -n eks-sample-app
 ```
 
+- **Run container command**:
+
 ```sh
 kubectl exec aws-cli -n eks-sample-app -- aws s3api list-buckets
 ```
+
+- **Delete Pod**:
 
 ```sh
 kubectl delete -f apps/sample/hello.yml -n eks-sample-app
 
 ```
 
-- **Create application**:
+### Create application
 
-```sh
-kubectl create namespace eks-sample-app
-```
+- **Deploy deployment to cluster**:
 
 ```sh
 kubectl apply -f apps/sample/deployment.yml -n eks-sample-app
 ```
 
+- **Deploy service to cluster**:
+
 ```sh
 kubectl apply -f apps/sample/service.yml -n eks-sample-app
 ```
+
+- **Get all pods**:
 
 ```sh
 kubectl get all -n eks-sample-app
 ```
 
+- **Get Logs**:
+
 ```sh
 kubectl logs -n eks-sample-app pod/eks-sample-linux-deployment-66cfbc47b7-v98lc
 ```
 
+- **Delete deployment**:
+
 ```sh
 kubectl delete -f apps/sample/deployment.yml -n eks-sample-app
 ```
+
+- **Delete service**:
 
 ```sh
 kubectl delete -f apps/sample/service.yml -n eks-sample-app
