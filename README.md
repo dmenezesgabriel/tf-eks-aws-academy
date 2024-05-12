@@ -107,7 +107,7 @@ kubectl delete -f apps/sample/hello.yml -n eks-sample-app
 
 ```
 
-### Create application
+### Nginx example
 
 - **Deploy deployment to cluster**:
 
