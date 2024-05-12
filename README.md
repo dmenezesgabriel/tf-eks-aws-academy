@@ -85,6 +85,18 @@ kubectl apply -f apps/sample/private-lb.yml -n eks-sample-app
 kubectl get all -n eks-sample-app
 ```
 
+- **Deploy auto scaler**:
+
+```sh
+kubectl apply -f apps/sample/auto-scaler.yml
+```
+
+- **Get autoscaler**:
+
+```sh
+kubectl get pods -n kube-system
+```
+
 - **Get services**:
 
 ```sh
@@ -113,6 +125,12 @@ kubectl delete -f apps/sample/public-lb.yml -n eks-sample-app
 
 ```sh
 kubectl delete -f apps/sample/private-lb.yml -n eks-sample-app
+```
+
+- **Delete auto scaler**:
+
+```sh
+kubectl delete -f apps/sample/auto-=scaler.yml -n kube-system
 ```
 
 ## Resources
