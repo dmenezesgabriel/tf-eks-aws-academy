@@ -14,6 +14,17 @@ aws_secret_access_key="your_aws_secret_access_key"
 aws_session_token="your_aws_session_token"
 ```
 
+## GitHub Actions
+
+Add secrets to your github repository at `settings` > `actions` > `secrets`
+
+- `AWS_SECRET_ACCESS_KEY`
+- `AWS_ACCESS_KEY_ID`
+- `AWS_SESSION_TOKEN`
+- `AWS_REGION`
+- `AWS_BUCKET_KEY_NAME`
+- `AWS_BUCKET_NAME`
+
 ## Terraform
 
 - **Go into the infrastructure directory**:
