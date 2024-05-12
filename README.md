@@ -1,4 +1,4 @@
-# EKS Cluster
+# Terraform EKS AWS Academy
 
 ## Update terraform credentials
 
@@ -8,13 +8,37 @@
 
 ## Terraform
 
-terraform init
-terraform fmt
-terraform plan
-terraform apply
-terraform destroy
+- **Go into the infrastructure directory**:
 
-## Apps
+```sh
+cd infrastructure
+```
+
+- **Init Terraform**:
+
+```sh
+terraform init
+```
+
+- **Check plan**:
+
+```sh
+terraform plan
+```
+
+- **Apply plan**:
+
+```sh
+terraform apply --auto-approve
+```
+
+- **Destroy**:
+
+```sh
+terraform destroy
+```
+
+## Sample Apps
 
 - **Set cluster connection config**:
 
@@ -130,7 +154,7 @@ kubectl delete -f apps/sample/private-lb.yml -n eks-sample-app
 - **Delete auto scaler**:
 
 ```sh
-kubectl delete -f apps/sample/auto-=scaler.yml -n kube-system
+kubectl delete -f apps/sample/auto-scaler.yml -n kube-system
 ```
 
 ## Resources
