@@ -10,7 +10,6 @@ terraform {
     encrypt        = true
     kms_key_id     = "alias/terraform-bucket-key"
     dynamodb_table = "postech-challenge-3-state"
-    profile        = "academy"
   }
   # --- At first terraform init must comment this block
   required_providers {
@@ -23,6 +22,5 @@ terraform {
 }
 
 provider "aws" {
-  profile = "academy"
-  region  = var.region
+  region = var.region
 }
