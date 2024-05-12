@@ -1,9 +1,17 @@
 # Terraform EKS AWS Academy
 
+This project deploy an EKS cluster in AWS Academy account using terraform and github actions for academic proposes.
+
 ## Update terraform credentials
 
+Write an `academy` profile into the `~/.aws/credentials` file
+
 ```sh
-~/.aws/credentials
+# ~/.aws/credentials
+[academy]
+aws_access_key_id="your_aws_access_key_id"
+aws_secret_access_key="your_aws_secret_access_key"
+aws_session_token="your_aws_session_token"
 ```
 
 ## Terraform
@@ -14,29 +22,45 @@
 cd infrastructure
 ```
 
-- **Init Terraform**:
+1. **Backend**:
+
+First comment the backend block at `infrastructure/provider.tf`
+
+```hcl
+backend "s3" {
+    ...
+}
+```
+
+2. **Init Terraform**:
 
 ```sh
 terraform init
 ```
 
-- **Check plan**:
+3. **Check plan**:
 
 ```sh
 terraform plan
 ```
 
-- **Apply plan**:
+4. **Apply plan**:
 
 ```sh
 terraform apply --auto-approve
 ```
 
-- **Destroy**:
+5.  **Backend**:
 
-```sh
-terraform destroy
+Uncomment the backend block at `infrastructure/provider.tf`
+
+```hcl
+backend "s3" {
+    ...
+}
 ```
+
+and repeat the steps from **2** to **4**
 
 ## Sample Apps
 
@@ -160,3 +184,4 @@ kubectl delete -f apps/sample/auto-scaler.yml -n kube-system
 ## Resources
 
 - [EKS Cluster Using Terraform + IAM Roles for Service Accounts & EKS Cluster Autoscaler](https://www.youtube.com/watch?v=MZyrxzb7yAU)
+- [Deploy to AWS with Terraform within a GitHub Action](https://www.youtube.com/watch?v=GowFk_5Rx_I&t=195s)
