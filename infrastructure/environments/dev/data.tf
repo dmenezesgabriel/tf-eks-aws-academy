@@ -32,10 +32,3 @@ data "aws_security_group" "main" {
   vpc_id = aws_vpc.main_vpc.id
   name   = "default"
 }
-
-# data "aws_instance" "ec2" {
-#   filter {
-#     name   = "tag:eks:nodegroup-name"
-#     values = ["${aws_eks_node_group.node.node_group_name}"]
-#   }
-# }

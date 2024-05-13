@@ -2,16 +2,16 @@ terraform {
 
   required_version = "~> 1.0"
 
-  # --- At first terraform init must comment this block
+  # --- Assure that the bucket and dynamo db table are created at backend dir
   backend "s3" {
-    bucket         = "postech-challenge-3-state"
+    bucket         = "postech-challenge-3-state-eks-293351734410"
     key            = "state/terraform.tfstate"
     region         = "us-east-1"
     encrypt        = true
     kms_key_id     = "alias/terraform-bucket-key"
-    dynamodb_table = "postech-challenge-3-state"
+    dynamodb_table = "postech-challenge-3-state-eks-293351734410"
   }
-  # --- At first terraform init must comment this block
+  # --- Assure that the bucket and dynamo db table are created at backend dir
   required_providers {
 
     aws = {
@@ -19,8 +19,4 @@ terraform {
       version = "~> 5.0"
     }
   }
-}
-
-provider "aws" {
-  region = var.region
 }
