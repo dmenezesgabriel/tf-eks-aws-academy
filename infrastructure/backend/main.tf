@@ -3,14 +3,14 @@ terraform {
   required_version = "~> 1.0"
 
   # --- At first terraform init must comment this block
-  # backend "s3" {
-  #   bucket         = "postech-challenge-3-state-eks"
-  #   key            = "state/terraform.tfstate"
-  #   region         = "us-east-1"
-  #   encrypt        = true
-  #   kms_key_id     = "alias/terraform-bucket-key"
-  #   dynamodb_table = "postech-challenge-3-state-eks"
-  # }
+  backend "s3" {
+    bucket         = "postech-challenge-3-293351734410"
+    key            = "state/terraform.tfstate"
+    region         = "us-east-1"
+    encrypt        = true
+    kms_key_id     = "alias/postech-challenge-3-293351734410-backend-bucket"
+    dynamodb_table = "postech-challenge-3-293351734410"
+  }
   # --- At first terraform init must comment this block
   required_providers {
 
@@ -39,7 +39,7 @@ resource "aws_kms_key" "terraform_bucket_key" {
 }
 
 resource "aws_kms_alias" "key_alias" {
-  name          = "alias/terraform-bucket-key"
+  name          = "alias/${var.project_name}-${data.aws_caller_identity.current.account_id}-backend-bucket"
   target_key_id = aws_kms_key.terraform_bucket_key.key_id
 }
 
