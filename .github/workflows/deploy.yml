@@ -96,6 +96,10 @@ jobs:
   expose_service:
     needs: deploy
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+        working-directory: .
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
