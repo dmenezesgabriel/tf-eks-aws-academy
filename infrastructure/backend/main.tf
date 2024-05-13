@@ -5,7 +5,7 @@ terraform {
   # --- At first terraform init must comment this block
   backend "s3" {
     bucket         = "postech-challenge-3-293351734410"
-    key            = "state/terraform.tfstate"
+    key            = "backend_state/terraform.tfstate"
     region         = "us-east-1"
     encrypt        = true
     kms_key_id     = "alias/postech-challenge-3-293351734410-backend-bucket"
