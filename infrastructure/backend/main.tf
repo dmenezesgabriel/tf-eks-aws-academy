@@ -2,16 +2,6 @@ terraform {
 
   required_version = "~> 1.0"
 
-  # --- At first terraform init must comment this block
-  backend "s3" {
-    bucket         = "postech-challenge-3-293351734410"
-    key            = "backend_state/terraform.tfstate"
-    region         = "us-east-1"
-    encrypt        = true
-    kms_key_id     = "alias/postech-challenge-3-293351734410-backend-bucket"
-    dynamodb_table = "postech-challenge-3-293351734410"
-  }
-  # --- At first terraform init must comment this block
   required_providers {
 
     aws = {
