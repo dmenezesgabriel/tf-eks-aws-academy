@@ -1,8 +1,9 @@
 name: Expose Kubernetes Service on AWS
-"on":
+
+on:
   push:
     branches:
-      - main
+      - master
 jobs:
   expose_service:
     needs: deploy
