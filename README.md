@@ -27,20 +27,10 @@ Add secrets to your github repository at `settings` > `actions` > `secrets`
 
 ## Terraform
 
-- **Go into the infrastructure directory**:
+1. **Go into backend directory**:
 
 ```sh
-cd infrastructure
-```
-
-1. **Backend**:
-
-First comment the backend block at `infrastructure/provider.tf`
-
-```hcl
-backend "s3" {
-    ...
-}
+cd infrastructure/backend
 ```
 
 2. **Init Terraform**:
@@ -61,14 +51,10 @@ terraform plan
 terraform apply --auto-approve
 ```
 
-5.  **Backend**:
+5. **Go into environments/dev directory**:
 
-Uncomment the backend block at `infrastructure/provider.tf`
-
-```hcl
-backend "s3" {
-    ...
-}
+```sh
+cd infrastructure/environments/dev
 ```
 
 and repeat the steps from **2** to **4**
