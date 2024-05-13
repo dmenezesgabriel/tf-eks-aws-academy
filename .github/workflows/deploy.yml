@@ -124,7 +124,7 @@ jobs:
           aws eks update-kubeconfig --name cluster-postech-challenge-3  --region ${{ secrets.AWS_REGION }}
       - name: Apply Load Balancer Configuration
         run: |
-          kubectl apply -f apps/private-lb.yml -n postech & \
-          kubectl apply -f apps/public-lb.yml -n postech & \
-          kubectl apply -f apps/deployment.yml -n postech & \
-          kubectl apply -f apps/auto-scaler.yml -n postech
+          kubectl apply -f apps/sample/private-lb.yml -n postech & \
+          kubectl apply -f apps/sample/public-lb.yml -n postech & \
+          kubectl apply -f apps/sample/deployment.yml -n postech & \
+          kubectl apply -f apps/sample/auto-scaler.yml -n postech
