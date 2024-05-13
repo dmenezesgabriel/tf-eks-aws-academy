@@ -20,10 +20,8 @@ Add secrets to your github repository at `settings` > `actions` > `secrets`
 
 - `AWS_SECRET_ACCESS_KEY`
 - `AWS_ACCESS_KEY_ID`
-- `AWS_SESSION_TOKEN`
+- `AWS_SESSION_TOKEN` _It's not possible to use oidc with aws academy labs_
 - `AWS_REGION`
-- `AWS_BUCKET_KEY_NAME`
-- `AWS_BUCKET_NAME`
 
 ## Terraform
 
